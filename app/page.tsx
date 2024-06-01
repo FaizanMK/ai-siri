@@ -77,8 +77,7 @@ export default function Home() {
 
       <header className="flex justify-between fixed top-0 text-white w-full p-5">
         <Image
-          src="https://i.imgur.com/MCHWJZS.png
-      "
+          src="https://i.imgur.com/MCHWJZS.png"
           alt="Logo"
           width={50}
           height={50}
