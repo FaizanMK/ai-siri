@@ -95,17 +95,18 @@
 
 "use server";
 
-import {
-  AzureKeyCredential,
-  ChatRequestMessage,
-  OpenAIClient,
-} from "@azure/openai";
+import { AzureKeyCredential, OpenAIClient } from "@azure/openai";
 
 async function transcript(prevState: any, formData: FormData) {
   "use server";
 
   const id = Math.random().toString(36);
+  type ChatRole = string;
 
+  interface ChatRequestMessage {
+    role: ChatRole;
+    content: ChatRole;
+  }
   console.log("PREVIOUS STATE:", prevState);
   if (
     process.env.AZURE_API_KEY === undefined ||
@@ -153,10 +154,10 @@ async function transcript(prevState: any, formData: FormData) {
   const messages: ChatRequestMessage[] = [
     {
       role: "system",
-      //   content:
-      //     "You are a helpful assistant. You will answer questions and reply I cannot answer that if you dont know the answer.",
+      content:
+        "You are a helpful assistant. You will answer questions and reply I cannot answer that if you dont know the answer.",
     },
-    { role: "user" },
+    { role: "user", content: result.text },
   ];
 
   //   console.log(`Messages: ${messages.map((m) => m.content).join("\n")}`);
