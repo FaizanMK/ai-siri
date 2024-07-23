@@ -153,13 +153,13 @@ async function transcript(prevState: any, formData: FormData) {
   const messages: ChatRequestMessage[] = [
     {
       role: "system",
-      content:
-        "You are a helpful assistant. You will answer questions and reply I cannot answer that if you dont know the answer.",
+      //   content:
+      //     "You are a helpful assistant. You will answer questions and reply I cannot answer that if you dont know the answer.",
     },
-    { role: "user", content: result.text },
+    { role: "user" },
   ];
 
-  console.log(`Messages: ${messages.map((m) => m.content).join("\n")}`);
+  //   console.log(`Messages: ${messages.map((m) => m.content).join("\n")}`);
 
   const completions = await client.getChatCompletions(
     process.env.AZURE_DEPLOYMENT_COMPLETIONS_NAME,
